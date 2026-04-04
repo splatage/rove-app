@@ -1,4 +1,4 @@
-# Mobile SSH App — Engineering Architecture
+# Rove — Engineering Architecture
 
 ## 1. Purpose
 

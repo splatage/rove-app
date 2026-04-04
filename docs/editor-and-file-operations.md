@@ -119,8 +119,22 @@ If disconnected during edit:
 
 ## 11.1 Browsing interaction
 - tap folder: open
-- tap file: open action sheet or configured direct action
+- tap file: open action sheet
 - long press any item: enter selection mode
+
+Baseline file actions from the tap action sheet must include:
+- Preview
+- Edit
+- Run in terminal
+- Download
+- Rename
+- Copy
+- Move / Cut
+- Delete
+- Properties
+
+Do not make direct-open or hidden default-file actions the baseline contract.
+If a faster direct-open gesture is ever added later, it must remain explicit, user-configurable, and secondary to the standard action-sheet model.
 
 ## 11.2 Selection mode
 Selection mode changes the top bar and shows:

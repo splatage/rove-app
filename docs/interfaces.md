@@ -175,6 +175,145 @@ class FavoriteCommand {
 }
 ```
 
+### FileEligibilityResult
+```dart
+sealed class FileEligibilityResult {}
+
+class EditableTextFile extends FileEligibilityResult {
+  final bool writable;
+  final int byteLength;
+}
+
+class PreviewOnlyTextFile extends FileEligibilityResult {
+  final String reason;
+  final int byteLength;
+}
+
+class RefusedFile extends FileEligibilityResult {
+  final String reason;
+}
+```
+
+### FileConflictContext
+```dart
+class FileConflictContext {
+  final HostId hostId;
+  final RemotePath sourcePath;
+  final String targetCanonicalPath;
+  final RemoteEntry? sourceEntry;
+  final RemoteEntry? targetEntry;
+  final bool isBatchOperation;
+  final int remainingConflictCount;
+}
+```
+
+### ConflictResolution
+```dart
+class ConflictResolution {
+  final ConflictResolutionAction action; // replace, skip, renameCopy, cancel
+  final bool applyToAllRemaining;
+  final String? renamedTargetName;
+}
+```
+
+### MoveResult
+```dart
+class MoveResult {
+  final List<RemotePath> moved;
+  final List<RemoteOperationFailure> failed;
+  final bool usedCopyDeleteFallback;
+}
+```
+
+### CopyResult
+```dart
+class CopyResult {
+  final List<RemotePath> copied;
+  final List<RemoteOperationFailure> failed;
+}
+```
+
+### DeleteResult
+```dart
+class DeleteResult {
+  final List<RemotePath> deleted;
+  final List<RemoteOperationFailure> failed;
+}
+```
+
+### PropertiesResult
+```dart
+class PropertiesResult {
+  final RemoteEntry entry;
+  final String displayedPath;
+  final String canonicalPath;
+  final DateTime? accessedAt;
+  final String? owner;
+  final String? group;
+  final int? linkCount;
+}
+```
+
+### RemoteOperationFailure
+```dart
+class RemoteOperationFailure {
+  final RemotePath path;
+  final String code;
+  final String message;
+}
+```
+
+### HostTrustState
+```dart
+class HostTrustState {
+  final bool trusted;
+  final String? fingerprint;
+  final bool mismatchDetected;
+  final bool requiresUserDecision;
+}
+```
+
+### KeySummary
+```dart
+class KeySummary {
+  final String id;
+  final String label;
+  final String keyType;
+  final String fingerprint;
+  final bool passphraseProtected;
+  final bool passphraseStoredSecurely;
+}
+```
+
+### KeyGenerationRequest
+```dart
+class KeyGenerationRequest {
+  final String label;
+  final String algorithm; // e.g. ed25519
+  final bool storePassphraseInSecureStorage;
+  final String? passphrase;
+}
+```
+
+### TransferError
+```dart
+class TransferError {
+  final String itemLabel;
+  final String code;
+  final String message;
+}
+```
+
+### AppConnectionStatus
+```dart
+enum AppConnectionStatus {
+  live,
+  reconnecting,
+  disconnected,
+  suspended,
+}
+```
+
 ---
 
 ## 3. Workspace/session services
@@ -373,6 +512,22 @@ Expected resolutions:
 - cancel
 - optionally apply to all remaining conflicts
 
+### TransferFailureSummary
+```dart
+class TransferFailureSummary {
+  final String jobId;
+  final int completedCount;
+  final int skippedCount;
+  final int failedCount;
+  final List<TransferError> failedItems;
+}
+```
+
+Caller UX is responsible for presenting:
+- Retry failed
+- View errors
+- Done
+
 ---
 
 ## 7. Host/security services
@@ -433,7 +588,7 @@ abstract class TrustService {
 abstract class NotificationService {
   Future<void> showTransferProgress(TransferJob job);
   Future<void> dismissTransferProgress(String jobId);
-  Future<void> showConnectionStatus(WorkspaceState state);
+  Future<void> showConnectionStatus(AppConnectionStatus status);
 }
 ```
 

@@ -134,4 +134,10 @@ If reconnect fails, offer:
 - visible background/foreground service style behavior may be used only where appropriate and explicit
 - still do not misrepresent continuity or hide failure
 
+### 23.3 Windows / Linux
+- desktop targets are less constrained by mobile suspend/resume rules
+- they may keep a live workspace active longer while the app remains running
+- the product must still use the same explicit status language and must not fake continuity after real disconnects
+- mobile-first interaction rules still govern shared behavior unless a desktop-specific enhancement is explicitly added later
+
 ---

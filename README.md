@@ -10,7 +10,7 @@ The product is built around a few hard constraints:
 - one encrypted SSH connection with multiplexed channels
 - explicit, conservative behavior with no hidden automation
 - OpenSSH/OpenBSD semantics where applicable
-- remote-first editing with no persistent local working copy
+- remote-only editing with no persistent local working copy
 
 ## Canonical document set
 

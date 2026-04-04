@@ -403,6 +403,9 @@ Visible active background work may surface through notification-backed behavior 
 ### 14.4 iOS
 Do not promise indefinite background continuity. Resume language must remain honest.
 
+### 14.5 Windows / Linux
+Desktop targets are generally less constrained by mobile background lifecycle rules, but Rove still uses the same explicit status language and must not imply continuity after a real disconnect.
+
 ## 15. State model boundary
 
 Developer-facing state must remain clearly separated:
