@@ -12,6 +12,17 @@ Deliver:
 - shell rendering
 - SFTP list/stat
 
+Milestone 1 ordered slice plan:
+1. Host chooser and app-shell entry wiring
+2. Single-workspace session lifecycle (`connect`/`disconnect` + visible state)
+3. Browser/Shell surface switcher with preserved per-surface state
+4. Shell rendering on one interactive session channel
+5. Browser list/stat over SFTP channel
+6. Final Milestone 1 audit + verification evidence capture
+
+Execution rule:
+- complete slices in order; do not begin a later slice while an earlier slice has unresolved gaps
+
 Milestone 1 acceptance boundary:
 - constrain implementation to host selection, single-workspace session lifecycle, and Browser/Shell primary-surface switching
 - include only Browser capabilities required for directory list/stat and shell capabilities required for one rendered interactive session
@@ -41,6 +52,13 @@ Milestone 1 implementation checklist (interfaces-first):
 - `BrowserService.listDirectory(path)` and `BrowserService.stat(path)` power Browser listing and item metadata for this milestone
 - host chooser routes into the single active workspace flow; no secondary live workspace path exists
 - reconnect behavior remains explicit state handling only; snapshot restore/editor/transfers remain deferred
+
+Milestone 1 verification matrix:
+- Contract verification (docs): `docs/master-spec.md`, `docs/navigation-and-hosts.md`, `docs/interfaces.md`, `docs/state-model.md`, and `docs/module-map.md` must agree on one active workspace and explicit Browser/Shell switching semantics
+- Controller wiring verification (runtime): connect, disconnect, and surface-switch flows must be covered by tests once implementation code exists
+- Service wiring verification (runtime): one SSH transport with shell + SFTP channel creation must be covered by integration tests once implementation code exists
+- Browser verification (runtime): list/stat behavior must be covered by SFTP-backed tests once implementation code exists
+- Shell verification (runtime): single interactive shell rendering and explicit state transitions must be covered by PTY/session tests once implementation code exists
 
 ## 2. Browser actions and transfers
 Goal: prove operational file work.
