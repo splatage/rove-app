@@ -6,10 +6,10 @@ Owns app bootstrap, route selection, lifecycle coordination, top-level dependenc
 ## domain
 Owns stable product-neutral types:
 - HostConfig
-- AdvancedSshOptions
-- HostContextSnapshot
-- WorkspaceSessionState
-- EditorSessionState
+- AdvancedSshConfig
+- WorkspaceContextSnapshot
+- WorkspaceState
+- EditorSession
 - TransferJob
 - FavoriteCommand
 - RecentCommand
