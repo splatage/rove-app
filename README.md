@@ -16,7 +16,6 @@ The product is built around a few hard constraints:
 
 ### Product and scope
 - `docs/master-spec.md` — canonical master specification
-- `docs/master_spec.md` — compatibility alias that points to the canonical master spec
 - `docs/product-overview.md` — product identity, principles, goals, and non-goals
 - `docs/navigation-and-hosts.md` — navigation hierarchy, workspace surfaces, host chooser, host setup, host detail, key manager
 - `docs/editor-and-file-operations.md` — editor lifecycle, browser/file operations, clipboard, move/delete/properties, transfers, transfer conflicts
