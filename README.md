@@ -16,7 +16,6 @@ The product is built around a few hard constraints:
 
 ### Product and scope
 - `docs/master-spec.md` — canonical master specification
-- `docs/master_spec.md` — compatibility alias that points to the canonical master spec
 - `docs/product-overview.md` — product identity, principles, goals, and non-goals
 - `docs/navigation-and-hosts.md` — navigation hierarchy, workspace surfaces, host chooser, host setup, host detail, key manager
 - `docs/editor-and-file-operations.md` — editor lifecycle, browser/file operations, clipboard, move/delete/properties, transfers, transfer conflicts
@@ -54,5 +53,4 @@ Remaining work is implementation and delivery detail rather than foundational sc
 ## Documentation notes
 
 - `docs/master-spec.md` is the canonical master spec.
-- `docs/master_spec.md` exists only as a compatibility redirect to prevent documentation drift from duplicate filenames.
 - Product docs now explicitly describe the app as **cross-platform (Android, iOS, Windows, Linux)** with a **mobile-first interaction model**.
