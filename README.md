@@ -53,5 +53,4 @@ Remaining work is implementation and delivery detail rather than foundational sc
 ## Documentation notes
 
 - `docs/master-spec.md` is the canonical master spec.
-- `docs/master_spec.md` exists only as a compatibility redirect to prevent documentation drift from duplicate filenames.
 - Product docs now explicitly describe the app as **cross-platform (Android, iOS, Windows, Linux)** with a **mobile-first interaction model**.
