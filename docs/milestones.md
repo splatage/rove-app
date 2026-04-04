@@ -32,6 +32,16 @@ Milestone 1 audit checklist:
 - Shell runtime behavior is limited to one rendered interactive shell session for this milestone
 - no editor, transfer orchestration, or advanced host/security flow requirements enforced in this milestone
 
+Milestone 1 implementation checklist (interfaces-first):
+- `WorkspaceController.connect(hostId)` opens one active workspace and one SSH transport
+- `WorkspaceController.disconnect()` tears down shell/SFTP channels and returns to a disconnected workspace state
+- `WorkspaceController.switchSurface(surface)` supports Browser↔Shell switching while preserving each surface state
+- `SshSessionService.open(config)` + `openShellChannel()` + `openSftpSession()` are wired through one underlying connection lifecycle
+- `ShellSessionService.startShell(config)` renders one interactive shell stream and exposes explicit output/state updates
+- `BrowserService.listDirectory(path)` and `BrowserService.stat(path)` power Browser listing and item metadata for this milestone
+- host chooser routes into the single active workspace flow; no secondary live workspace path exists
+- reconnect behavior remains explicit state handling only; snapshot restore/editor/transfers remain deferred
+
 ## 2. Browser actions and transfers
 Goal: prove operational file work.
 
