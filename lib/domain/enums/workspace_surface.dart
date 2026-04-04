@@ -1,0 +1,4 @@
+enum WorkspaceSurface {
+  browser,
+  shell,
+}

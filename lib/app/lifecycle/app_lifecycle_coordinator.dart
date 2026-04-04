@@ -1,0 +1,26 @@
+import 'package:flutter/widgets.dart';
+
+class AppLifecycleCoordinator extends ChangeNotifier with WidgetsBindingObserver {
+  AppLifecycleCoordinator() {
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  AppLifecycleState _state = AppLifecycleState.resumed;
+
+  AppLifecycleState get state => _state;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (_state == state) {
+      return;
+    }
+    _state = state;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+}

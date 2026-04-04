@@ -28,6 +28,21 @@ The product is built around a few hard constraints:
 - `docs/module-map.md` — module/package map
 - `docs/milestones.md` — staged delivery plan
 
+## Implementation status
+
+The repository now includes the **Slice 1 Flutter scaffold**:
+
+- Flutter app shell and theme
+- app lifecycle coordinator
+- host chooser with pinned-then-MRU ordering
+- new host basic form
+- host detail route skeleton
+- Browser/Shell workspace scaffold with top switcher
+- canonical domain models for the initial host/workspace layer
+- in-memory host store and SSH service seam
+
+Runtime SSH, SFTP, terminal rendering, editor, and transfer execution are intentionally deferred to later slices.
+
 ## Scope status
 
 The major product-shape decisions are locked.
