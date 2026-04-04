@@ -324,13 +324,13 @@ class HostConfig {
   final bool useScreen;
   final String? screenSessionName;
   final bool quitScreenOnLogout;
-  final AdvancedSshOptions advanced;
+  final AdvancedSshConfig advanced;
 }
 ```
 
-## 6.2 AdvancedSshOptions
+## 6.2 AdvancedSshConfig
 ```dart
-class AdvancedSshOptions {
+class AdvancedSshConfig {
   final bool identitiesOnly;
   final bool useAgent;
   final bool passwordAuthEnabled;
@@ -351,9 +351,9 @@ class AdvancedSshOptions {
 }
 ```
 
-## 6.3 HostContextSnapshot
+## 6.3 WorkspaceContextSnapshot
 ```dart
-class HostContextSnapshot {
+class WorkspaceContextSnapshot {
   final String hostId;
   final String? lastBrowserPath;
   final List<String> selectedPaths;
@@ -362,9 +362,9 @@ class HostContextSnapshot {
 }
 ```
 
-## 6.4 WorkspaceSessionState
+## 6.4 WorkspaceState
 ```dart
-class WorkspaceSessionState {
+class WorkspaceState {
   final String hostId;
   final SessionHealth health;
   final TransportState transportState;
@@ -375,9 +375,9 @@ class WorkspaceSessionState {
 }
 ```
 
-## 6.5 EditorSessionState
+## 6.5 EditorSession
 ```dart
-class EditorSessionState {
+class EditorSession {
   final String hostId;
   final String displayedPath;
   final String canonicalPath;
@@ -526,7 +526,7 @@ Responsibilities:
 
 ```dart
 abstract class EditorSaveService {
-  Future<SaveResult> save(EditorSessionState session, String content);
+  Future<SaveResult> save(EditorSession session, String content);
 }
 ```
 
@@ -570,8 +570,8 @@ Responsibilities:
 
 ```dart
 abstract class ContextSnapshotStore {
-  Future<void> save(HostContextSnapshot snapshot);
-  Future<HostContextSnapshot?> load(String hostId);
+  Future<void> save(WorkspaceContextSnapshot snapshot);
+  Future<WorkspaceContextSnapshot?> load(String hostId);
   Future<void> clear(String hostId);
 }
 ```
